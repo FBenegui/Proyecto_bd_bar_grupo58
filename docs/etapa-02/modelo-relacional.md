@@ -1,21 +1,37 @@
 Diagrama 
 
 cliente ||--o{ persona : "es un" 
+
 persona ||--o{ usuario : "es un" 
+
 persona ||--o{ ubicacion : "tiene" 
+
 usuario ||--o{ rol : "tiene" 
+
 usuario ||--o{ venta : "fabrica" 
+
 usuario ||--o{ venta_detalle : "fabrica" 
+
 rol ||--o{ metodo_pago : "usos" 
+
 metodo_pago ||--o{ producto : "paga" 
+
 producto ||--o{ categoria : "pertenece a" 
+
 producto ||--o{ receta : "es parte de" 
+
 producto ||--o{ producto_ingrediente : "tiene" 
+
 categoria ||--o{ receta : "define" 
+
 receta ||--o{ ingrediente : "usos" 
+
 producto_ingrediente ||--o{ ingrediente : "usos" 
+
 venta ||--o{ venta_detalle : "tiene" 
+
 venta_detalle ||--o{ producto : "contiene"
+
 
     cliente {
         string id_cliente PK
