@@ -171,3 +171,74 @@
         (7, 8, 60.00),   -- 60 ml de Campari
         (7, 9, 200.00),  -- 200 ml de Jugo de Naranja
         (7, 7, 4.00);    -- 4 cubos de hielo
+
+--DML  de VENTAS y DETALLE_VENTA
+ -- Referencias usadas:
+    --   Cajeros (usuario): 3 = Lucía (Cajero), 10 = Nicolás (Cajero)
+    --   Meseros (usuario): 4 = Martín (Mozo),  9 = Camila (Mozo)
+    --   Clientes: 11 al 20
+    --   Ubicaciones: 1-5 Mesas, 6-7 Terraza, 8 Barra, 9 Salón VIP, 10 Zona Delivery
+    --   Métodos de pago: 1, 2 y 3 (verificar con SELECT * FROM metodo_pago)
+    -- Reglas: EN_LOCAL en mesa/terraza/VIP lleva mozo; en la Barra no lleva mozo;
+    --         PARA_LLEVAR sin ubicación ni mozo; DELIVERY usa "Zona Delivery" y sin mozo
+         SET IDENTITY_INSERT venta ON;
+    INSERT INTO venta (id_venta, fecha_hora, estado_venta, modalidad_consumo, id_cliente, id_ubicacion, id_metodo_pago, id_cajero, id_mesero, usuario_modificacion) VALUES
+        (1, '2026-09-24 20:30:00', 'PAGADA',    'EN_LOCAL',    11,   1,    1, 3,  4,    'admin'),  -- Mesa 1, cliente registrado
+        (2, '2026-09-24 22:15:00', 'PAGADA',    'EN_LOCAL',    NULL, 6,    2, 3,  9,    'admin'),  -- Terraza 1, consumidor final
+        (3, '2026-09-25 21:00:00', 'PAGADA',    'EN_LOCAL',    12,   3,    2, 10, 4,    'admin'),  -- Mesa 3, botella en mesa
+        (4, '2026-09-26 23:10:00', 'PAGADA',    'EN_LOCAL',    NULL, 8,    1, 10, NULL, 'admin'),  -- Barra, atendida sin mozo
+        (5, '2026-09-27 19:40:00', 'PAGADA',    'PARA_LLEVAR', 13,   NULL, 3, 3,  NULL, 'admin'),  -- Para llevar
+        (6, '2026-09-28 21:30:00', 'CANCELADA', 'EN_LOCAL',    14,   2,    1, 3,  9,    'admin'),  -- Mesa 2, cancelada
+        (7, '2026-09-29 22:00:00', 'PAGADA',    'EN_LOCAL',    15,   9,    2, 10, 4,    'admin'),  -- Salón VIP, grupo grande
+        (8, '2026-09-30 20:45:00', 'PENDIENTE', 'EN_LOCAL',    16,   7,    1, 3,  9,    'admin'),  -- Terraza 2, mesa abierta
+        (9, '2026-09-30 21:20:00', 'PAGADA',    'DELIVERY',    17,   10,   3, 10, NULL, 'admin');  -- Zona Delivery
+    SET IDENTITY_INSERT venta OFF;
+
+    -- Tabla VENTA_DETALLE (22 registros)
+    -- precio_unitario = precio del producto al momento de la venta
+    -- Productos: 1 Botella Fernet (12000), 2 Botella Smirnoff (9500),
+    --            3 Botella Campari (10500), 4 Fernet con Coca (4500),
+    --            5 Gin Tonic (5200), 6 Mojito (5500), 7 Campari Orange (4800),
+    --            8 Coca-Cola 500ml (2000), 9 Agua Mineral 500ml (1500),
+    --            10 Pinta IPA (3500)
+
+    INSERT INTO venta_detalle (id_venta, id_producto, cantidad, precio_unitario) VALUES
+        -- Venta 1: Mesa 1
+        (1, 4,  2, 4500.00),   -- 2 Fernet con Coca
+        (1, 5,  1, 5200.00),   -- 1 Gin Tonic
+        (1, 9,  1, 1500.00),   -- 1 Agua Mineral
+ 
+        -- Venta 2: Terraza 1
+        (2, 6,  2, 5500.00),   -- 2 Mojitos
+        (2, 10, 2, 3500.00),   -- 2 Pintas IPA
+ 
+        -- Venta 3: Mesa 3 (botella para compartir)
+        (3, 1,  1, 12000.00),  -- 1 Botella Fernet Branca
+        (3, 8,  4, 2000.00),   -- 4 Coca-Cola
+        (3, 9,  2, 1500.00),   -- 2 Agua Mineral
+ 
+        -- Venta 4: Barra
+        (4, 10, 3, 3500.00),   -- 3 Pintas IPA
+        (4, 4,  2, 4500.00),   -- 2 Fernet con Coca
+ 
+        -- Venta 5: Para llevar
+        (5, 2,  1, 9500.00),   -- 1 Botella Smirnoff
+        (5, 8,  2, 2000.00),   -- 2 Coca-Cola
+ 
+        -- Venta 6: Mesa 2 (cancelada)
+        (6, 5,  2, 5200.00),   -- 2 Gin Tonic
+        (6, 7,  1, 4800.00),   -- 1 Campari Orange
+ 
+        -- Venta 7: Salón VIP (grupo grande)
+        (7, 1,  1, 12000.00),  -- 1 Botella Fernet Branca
+        (7, 3,  1, 10500.00),  -- 1 Botella Campari
+        (7, 8,  6, 2000.00),   -- 6 Coca-Cola
+ 
+        -- Venta 8: Terraza 2 (pendiente)
+        (8, 6,  2, 5500.00),   -- 2 Mojitos
+        (8, 5,  1, 5200.00),   -- 1 Gin Tonic
+        (8, 9,  1, 1500.00),   -- 1 Agua Mineral
+ 
+        -- Venta 9: Delivery
+        (9, 4,  3, 4500.00),   -- 3 Fernet con Coca
+        (9, 8,  2, 2000.00);   -- 2 Coca-Cola
