@@ -1,3 +1,5 @@
+CREATE DATABASE Gestion_Bar;
+
 -- ============================================================
 -- 1. DDL de PERSONAS y USUARIOS
 --    (persona, cliente, ubicacion, usuario, rol
