@@ -3,6 +3,9 @@
     Rango de ejemplo: 24/09/2026 a 30/09/2026, inclusive.
     Se consideran únicamente ventas PAGADAS.
 */
+USE Gestion_Bar;
+GO
+
 DECLARE @FechaDesde DATE = '2026-09-24';
 DECLARE @FechaHasta DATE = '2026-09-30';
 
