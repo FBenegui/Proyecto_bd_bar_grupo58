@@ -1,12 +1,14 @@
-<<<<<<< HEAD
 CREATE DATABASE Gestion_Bar;
+GO 
+USE Gestion_Bar;
+GO
 
 -- ============================================================
 -- 1. DDL de PERSONAS y USUARIOS
 --    (persona, cliente, ubicacion, usuario, rol
 --     + relaciones necesarias)
 -- ============================================================
-=======
+
 -- Tabla PERSONA
 CREATE TABLE persona (
     id_persona INT IDENTITY(1,1) PRIMARY KEY,
@@ -16,7 +18,7 @@ CREATE TABLE persona (
     email_personal VARCHAR(120),
     telefono VARCHAR(30)
 );
->>>>>>> cdd0242adc0899f7c06dfc3e78c90fca93ff034d
+
 
 -- Tabla ROL
 CREATE TABLE rol (

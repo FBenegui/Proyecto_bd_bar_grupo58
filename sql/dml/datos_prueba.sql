@@ -1,3 +1,6 @@
+USE Gestion_Bar;
+GO
+
 -- Tabla ROL
 SET IDENTITY_INSERT rol ON;
 INSERT INTO rol (id_rol, nombre_rol) VALUES
@@ -129,22 +132,22 @@ INSERT INTO receta (id_producto, preparacion) VALUES
 
 -- Tabla VENTA
 SET IDENTITY_INSERT venta ON;
-INSERT INTO venta (id_venta, fecha_hora, estado_venta, modalidad_consumo, id_cliente, id_ubicacion, id_metodo_pago, id_cajero, id_mesero, usuario_modificacion) VALUES
-    (1, '2026-09-24 20:30:00', 'PAGADA',    'EN_LOCAL',    11,   1,    1, 3,  4,    'admin'),  -- Mesa 1, cliente registrado
-    (2, '2026-09-24 22:15:00', 'PAGADA',    'EN_LOCAL',    NULL, 6,    2, 3,  9,    'admin'),  -- Terraza 1, consumidor final
-    (3, '2026-09-25 21:00:00', 'PAGADA',    'EN_LOCAL',    12,   3,    2, 10, 4,    'admin'),  -- Mesa 3, botella en mesa
-    (4, '2026-09-26 23:10:00', 'PAGADA',    'EN_LOCAL',    NULL, 8,    1, 10, NULL, 'admin'),  -- Barra, atendida sin mozo
-    (5, '2026-09-27 19:40:00', 'PAGADA',    'PARA_LLEVAR', 13,   NULL, 3, 3,  NULL, 'admin'),  -- Para llevar
-    (6, '2026-09-28 21:30:00', 'CANCELADA', 'EN_LOCAL',    14,   2,    1, 3,  9,    'admin'),  -- Mesa 2, cancelada
-    (7, '2026-09-29 22:00:00', 'PAGADA',    'EN_LOCAL',    15,   9,    2, 10, 4,    'admin'),  -- Salón VIP, grupo grande
-    (8, '2026-09-30 20:45:00', 'PENDIENTE', 'EN_LOCAL',    16,   7,    1, 3,  9,    'admin'),  -- Terraza 2, mesa abierta
-    (9, '2026-09-30 21:20:00', 'PAGADA',    'DELIVERY',    17,   10,   3, 10, NULL, 'admin');  -- Zona Delivery
-    (10, '2026-10-01 21:00:00', 'PAGADA',   'EN_LOCAL',    11,   1,    1, 3,  4,    'admin'),  -- Mesa 1, cliente registrado, segunda compra
-    (11, '2026-10-02 22:30:00', 'PAGADA',   'EN_LOCAL',    11,   2,    2, 3,  9,    'admin'),  -- Mesa 2, cliente registrado, tercera compra
-    (12, '2026-10-03 20:15:00', 'PAGADA',   'EN_LOCAL',    15,   3,    1, 10, 4,    'admin'),  -- Mesa 3, cliente registrado, segunda compra
-    (13, '2026-10-04 21:45:00', 'PAGADA',   'EN_LOCAL',    15,   1,    2, 3,  9,    'admin'),  -- Mesa 1, cliente registrado, tercera compra
-    (14, '2026-10-05 23:00:00', 'PAGADA',   'EN_LOCAL',    15,   5,    3, 10, NULL, 'admin'),  -- Mesa 5, cliente registrado, cuarta compra
-    (15, '2026-10-06 20:30:00', 'PAGADA',   'PARA_LLEVAR', 13,   NULL, 1, 3,  NULL, 'admin');  -- Para llevar, cliente registrado, segunda compra
+INSERT INTO venta (id_venta, fecha_hora, estado_venta, modalidad_consumo, id_cliente, id_ubicacion, id_metodo_pago, id_cajero, id_mesero) VALUES
+    (1, '2026-09-24 20:30:00', 'PAGADA',    'EN_LOCAL',    11,   1,    1, 3,  4  ),  -- Mesa 1, cliente registrado
+    (2, '2026-09-24 22:15:00', 'PAGADA',    'EN_LOCAL',    NULL, 6,    2, 3,  9  ),  -- Terraza 1, consumidor final
+    (3, '2026-09-25 21:00:00', 'PAGADA',    'EN_LOCAL',    12,   3,    2, 10, 4  ),  -- Mesa 3, botella en mesa
+    (4, '2026-09-26 23:10:00', 'PAGADA',    'EN_LOCAL',    NULL, 8,    1, 10, NULL),  -- Barra, atendida sin mozo
+    (5, '2026-09-27 19:40:00', 'PAGADA',    'PARA_LLEVAR', 13,   NULL, 3, 3,  NULL),  -- Para llevar
+    (6, '2026-09-28 21:30:00', 'CANCELADA', 'EN_LOCAL',    14,   2,    1, 3,  9  ),  -- Mesa 2, cancelada
+    (7, '2026-09-29 22:00:00', 'PAGADA',    'EN_LOCAL',    15,   9,    2, 10, 4  ),  -- Salón VIP, grupo grande
+    (8, '2026-09-30 20:45:00', 'PENDIENTE', 'EN_LOCAL',    16,   7,    1, 3,  9  ),  -- Terraza 2, mesa abierta
+    (9, '2026-09-30 21:20:00', 'PAGADA',    'DELIVERY',    17,   10,   3, 10, NULL),  -- Zona Delivery
+    (10, '2026-10-01 21:00:00', 'PAGADA',   'EN_LOCAL',    11,   1,    1, 3,  4  ),  -- Mesa 1, cliente registrado, segunda compra
+    (11, '2026-10-02 22:30:00', 'PAGADA',   'EN_LOCAL',    11,   2,    2, 3,  9  ),  -- Mesa 2, cliente registrado, tercera compra
+    (12, '2026-10-03 20:15:00', 'PAGADA',   'EN_LOCAL',    15,   3,    1, 10, 4  ),  -- Mesa 3, cliente registrado, segunda compra
+    (13, '2026-10-04 21:45:00', 'PAGADA',   'EN_LOCAL',    15,   1,    2, 3,  9  ),  -- Mesa 1, cliente registrado, tercera compra
+    (14, '2026-10-05 23:00:00', 'PAGADA',   'EN_LOCAL',    15,   5,    3, 10, NULL),  -- Mesa 5, cliente registrado, cuarta compra
+    (15, '2026-10-06 20:30:00', 'PAGADA',   'PARA_LLEVAR', 13,   NULL, 1, 3,  NULL);  -- Para llevar, cliente registrado, segunda compra
 SET IDENTITY_INSERT venta OFF;
 
 -- Tabla VENTA_DETALLE
@@ -187,7 +190,7 @@ INSERT INTO venta_detalle (id_venta, id_producto, cantidad, precio_unitario) VAL
 
     -- Venta 9: Delivery
     (9, 4,  3, 4500.00),   -- 3 Fernet con Coca
-    (9, 8,  2, 2000.00);   -- 2 Coca-Cola
+    (9, 8,  2, 2000.00),      -- 2 Coca-Cola
 
     --Venta 10: mesa 1  
     (10, 1, 2, 12000.00), -- 2 Fernet grandes 
@@ -204,7 +207,7 @@ INSERT INTO venta_detalle (id_venta, id_producto, cantidad, precio_unitario) VAL
     -- Venta 13: salón VIP
     (13, 1,  1, 12000.00),  -- 1 Botella Fernet Branca
     (13, 3,  1, 10500.00),  -- 1 Botella Campari
-    (13, 9,  2, 1500.00);   -- 2 Agua Mineral
+    (13, 9,  2, 1500.00),   -- 2 Agua Mineral
 
     -- Venta 14: mesa 5
     (14, 8,  4, 2000.00),   -- 4 Coca-Cola
