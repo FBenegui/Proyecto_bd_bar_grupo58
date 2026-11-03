@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://media.giphy.com/media/l41JRsph73VokN6ik/giphy.gif" alt="Pixel Art Bar" width="200"/>
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3h6cHk1bWtpazBwdWM4dTkwaDJ4NWYxc3NqbWhlcWFkbGxjMWZ3eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif" alt="Pixel Art Bar" width="200"/>
 
   # Sistema de Gestión de Ventas para Bar 
   
