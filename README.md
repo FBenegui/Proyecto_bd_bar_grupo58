@@ -22,6 +22,8 @@ El sistema está estructurado bajo una arquitectura de base de datos robusta en 
 *   **Seguridad y Roles:** Estructura de usuarios basada en roles funcionales (Administrador, Gerente, Cajero, Mozo, Delivery, etc.) para restringir el acceso a las operaciones sensibles.
 *   **Optimización de Consultas:** Uso de índices para agilizar la generación de reportes y balances estadísticos de ventas.
 
+La explicación, el índice sugerido y el procedimiento reproducible de medición del informe de ventas se encuentran en [`docs/etapa-05/optimizacion-consultas.md`](docs/etapa-05/optimizacion-consultas.md). El benchmark usa una base sintética independiente.
+
 ## 🛠️ Tecnologías Utilizadas
 
 <div align="center">
